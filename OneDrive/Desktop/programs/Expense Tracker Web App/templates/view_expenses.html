@@ -4,9 +4,74 @@
 
 <h1 class="mb-4">💰 Expense Records</h1>
 
+<!-- Dashboard Cards -->
+
+<div class="row mb-4">
+
+    <div class="col-md-4">
+
+        <div class="card bg-success text-white shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Records</h5>
+
+                <h2>{{ expenses|length }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-primary text-white shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Expenses</h5>
+
+                <h2>
+                    ₹
+                    {% set total = namespace(value=0) %}
+                    {% for expense in expenses %}
+                        {% set total.value = total.value + expense[2] %}
+                    {% endfor %}
+                    {{ total.value }}
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-warning shadow">
+
+            <div class="card-body text-center">
+
+                <h5>Total Categories</h5>
+
+                <h2>8</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Main Card -->
+
 <div class="card shadow">
 
     <div class="card-body">
+
+        <!-- Search -->
 
         <form method="GET" action="/expenses" class="mb-4">
 
@@ -25,7 +90,7 @@
                 <div class="col-md-2">
 
                     <button class="btn btn-primary w-100">
-                        Search
+                        🔍 Search
                     </button>
 
                 </div>
@@ -34,69 +99,103 @@
 
         </form>
 
+        <!-- Buttons -->
+
         <div class="mb-3">
 
-            <a href="/add" class="btn btn-success">
+            <a href="/add"
+               class="btn btn-success">
+
                 ➕ Add Expense
+
             </a>
 
-            <a href="/" class="btn btn-secondary">
+            <a href="/"
+               class="btn btn-secondary">
+
                 🏠 Home
+
             </a>
 
         </div>
 
-        <table class="table table-bordered table-striped">
+        <!-- Table -->
 
-            <thead class="table-dark">
+        <div class="table-responsive">
 
-                <tr>
+            <table class="table table-bordered table-hover">
 
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>Action</th>
+                <thead class="table-dark">
 
-                </tr>
+                    <tr>
 
-            </thead>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Action</th>
 
-            <tbody>
+                    </tr>
 
-                {% for expense in expenses %}
+                </thead>
 
-                <tr>
+                <tbody>
 
-                    <td>{{ expense[0] }}</td>
-                    <td>{{ expense[1] }}</td>
-                    <td>₹{{ expense[2] }}</td>
-                    <td>{{ expense[3] }}</td>
-                    <td>{{ expense[4] }}</td>
+                    {% for expense in expenses %}
 
-                    <td>
+                    <tr>
 
-                        <a href="/update/{{ expense[0] }}"
-                           class="btn btn-warning btn-sm">
-                            Edit
-                        </a>
+                        <td>{{ expense[0] }}</td>
 
-                        <a href="/delete/{{ expense[0] }}"
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('Delete Expense?')">
-                            Delete
-                        </a>
+                        <td>{{ expense[1] }}</td>
 
-                    </td>
+                        <td>
+                            <strong>
+                                ₹{{ expense[2] }}
+                            </strong>
+                        </td>
 
-                </tr>
+                        <td>
 
-                {% endfor %}
+                            <span class="badge bg-info">
 
-            </tbody>
+                                {{ expense[3] }}
 
-        </table>
+                            </span>
+
+                        </td>
+
+                        <td>{{ expense[4] }}</td>
+
+                        <td>
+
+                            <a href="/update/{{ expense[0] }}"
+                               class="btn btn-warning btn-sm">
+
+                                ✏️ Edit
+
+                            </a>
+
+                            <a href="/delete/{{ expense[0] }}"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Delete this expense?')">
+
+                                🗑 Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 
