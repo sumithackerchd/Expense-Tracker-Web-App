@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-body text-center p-5">
+
+        <h1 class="display-5 fw-bold">
+            💰 Expense Tracker Dashboard
+        </h1>
+
+        <p class="lead text-muted">
+
+            A modern Flask and SQLite based application
+            for tracking and managing daily expenses.
+
+        </p>
+
+        <div class="mb-4">
+
+            <span class="badge bg-primary fs-6">
+                Python
+            </span>
+
+            <span class="badge bg-success fs-6">
+                Flask
+            </span>
+
+            <span class="badge bg-dark fs-6">
+                SQLite
+            </span>
+
+            <span class="badge bg-warning text-dark fs-6">
+                Bootstrap
+            </span>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <h2>➕</h2>
+
+                <h4>Add Expenses</h4>
+
+                <p class="text-muted">
+                    Record daily expenses quickly.
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2>📊</h2>
+
+                <h4>Track Spending</h4>
+
+                <p class="text-muted">
+                    Monitor your spending habits.
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h2>🔍</h2>
+
+                <h4>Search Expenses</h4>
+
+                <p class="text-muted">
+                    Find expenses by title or category.
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <a href="/add"
+           class="btn btn-success btn-lg m-2">
+
+            ➕ Add Expense
+
+        </a>
+
+        <a href="/expenses"
+           class="btn btn-primary btn-lg m-2">
+
+            📋 View Expenses
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
