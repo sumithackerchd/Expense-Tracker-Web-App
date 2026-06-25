@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CyberShield Pro</title>
+<style>
+body{font-family:Arial;max-width:900px;margin:auto;padding:20px}
+.card{border:1px solid #ddd;padding:15px;margin-top:15px;border-radius:8px}
+input{width:70%;padding:10px} button{padding:10px}
+</style>
+</head>
+<body>
+<h1>CyberShield Pro</h1>
+<form method="post">
+<input name="url" placeholder="https://example.com" required>
+<button>Scan</button>
+</form>
+
+{% if data %}
+<div class="card">
+<pre>{{data}}</pre>
+</div>
+{% endif %}
+</body>
+</html>

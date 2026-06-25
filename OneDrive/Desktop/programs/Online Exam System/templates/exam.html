@@ -16,7 +16,16 @@
 <h1 class="mb-4">
 📝 Online Exam
 </h1>
+<div class="alert alert-danger text-center">
 
+<h4>
+
+⏳ Time Left:
+<span id="timer">60</span> Seconds
+
+</h4>
+
+</div>
 <form method="POST" action="/result">
 
 {% for q in questions %}
@@ -100,3 +109,26 @@ Submit Exam
 
 </body>
 </html>
+<script>
+
+let timeLeft = 60;
+
+let timer = setInterval(function(){
+
+    timeLeft--;
+
+    document.getElementById("timer").innerText = timeLeft;
+
+    if(timeLeft <= 0){
+
+        clearInterval(timer);
+
+        alert("Time Up! Exam Submitted");
+
+        document.forms[0].submit();
+
+    }
+
+},1000);
+
+</script>
