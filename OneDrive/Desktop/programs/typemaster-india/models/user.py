@@ -2,6 +2,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from . import db
 
+
 class User(UserMixin, db.Model):
 
     __tablename__ = "users"
@@ -19,6 +20,3 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(255), nullable=False)
 
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f"<User {self.username}>"
